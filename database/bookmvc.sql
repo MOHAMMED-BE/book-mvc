@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 07, 2024 at 09:28 PM
+-- Generation Time: Nov 30, 2024 at 09:58 PM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -30,20 +30,27 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `books`;
 CREATE TABLE IF NOT EXISTS `books` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`id`, `name`, `price`, `image`, `created_at`) VALUES
-(1, 'DELL XPS', 8000.00, '87ef892aa6fcc45f504a037ff69e603c.jpg', '2024-11-03 16:09:03'),
-(2, 'Lenovo vivobook', 9999.90, 'd15d59350328153d9b5499a81431f622.png', '2024-11-07 13:36:09');
+INSERT INTO `books` (`id`, `title`, `author`, `image`) VALUES
+(1, 'The Great Gatsby', 'F. Scott Fitzgerald', 'gatsby.jpg'),
+(2, '1984', 'George Orwell', '1984.jpeg'),
+(3, 'To Kill a Mockingbird', 'Harper Lee', 'mockingbird.jpg'),
+(4, 'Pride and Prejudice', 'Jane Austen', 'pride.jpeg'),
+(5, 'The Catcher in the Rye', 'J.D. Salinger', 'catcher.jpeg'),
+(6, 'The Lord of the Rings', 'J.R.R. Tolkien', 'lotr.jpg'),
+(7, 'Moby Dick', 'Herman Melville', 'mobydick.jpg'),
+(8, 'War and Peace', 'Leo Tolstoy', 'warpeace.jpg'),
+(9, 'The Odyssey', 'Homer', 'odyssey.jpeg'),
+(10, 'The Hobbit', 'J.R.R. Tolkien', 'hobbit.jpeg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

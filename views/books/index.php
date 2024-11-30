@@ -30,7 +30,7 @@
         <table class="table">
             <thead class="table-dark">
                 <tr>
-                    <!-- <th>Image</th> -->
+                    <th>Image</th>
                     <th>Titre</th>
                     <th>Auteur</th>
                     <th>Actions</th>
@@ -39,15 +39,15 @@
             <tbody>
                 <?php foreach ($books as $book): ?>
                     <tr class="bg-white">
-                        <!-- <td>
+                        <td>
                             <?php if (!empty($book['image'])): ?>
                                 <img src="/bookmvc/uploads/book_image/<?php echo htmlspecialchars($book['image']); ?>" alt="<?php echo htmlspecialchars($book['title']); ?>" class="rounded" style="width: 65px; height: auto;">
                             <?php else: ?>
                                 <span>No Image</span>
                             <?php endif; ?>
-                        </td> -->
+                        </td>
                         <td><?php echo htmlspecialchars($book['title']); ?></td>
-                        <td><?php echo htmlspecialchars($book['author']); ?> MAD</td>
+                        <td><?php echo htmlspecialchars($book['author']); ?></td>
                         <td>
                             <a href="/bookmvc/index.php?book/edit&id=<?php echo $book['id']; ?>" class="btn btn-warning btn-sm">Edit</a>
                             <a href="/bookmvc/index.php?book/delete&id=<?php echo $book['id']; ?>" class="btn btn-danger btn-sm">Delete</a>

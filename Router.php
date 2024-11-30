@@ -28,8 +28,8 @@ class Router
             }
         }
 
-        $allowedControllers = ['BookController', 'UserController'];
-        $allowedActions = ['index', 'show', 'create', 'store', 'edit', 'update', 'delete', 'login', 'logincheck', 'logout', 'signup', 'search'];
+        $allowedControllers = ['BookController'];
+        $allowedActions = ['index',  'create', 'store', 'edit', 'update', 'delete', 'search'];
 
         if (!in_array($this->controllerName, $allowedControllers)) {
             die("Controller '{$this->controllerName}' is not allowed.");

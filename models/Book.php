@@ -76,18 +76,6 @@ class Book
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getByIds($id)
-    {
-        $query = "SELECT *
-              FROM " . $this->table . "
-              WHERE books.id = :id";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-
     public function create($title, $author)
     {
         try {
@@ -107,16 +95,30 @@ class Book
 
     public function update($id, $title, $author)
     {
-        $query = "UPDATE books 
-              SET title = :title, author = :author
-              WHERE id = :id";
+        $query = "UPDATE " . $this->table . " SET title = :title, author = :author";
+        $params = [
+            ':id' => $id,
+            ':title' => $title,
+            ':author' => $author,
+        ];
 
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            try {
+                $newFileName = $this->uploadHelper->upload($_FILES['image'], 'book_image');
+                $query .= ", image = :image";
+                $params[':image'] = $newFileName;
+
+                $this->deleteImageFile($id);
+            } catch (Exception $e) {
+                echo "Error: " . $e->getMessage();
+                return false;
+            }
+        }
+
+        $query .= " WHERE id = :id";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':author', $author);
 
-        return $stmt->execute();
+        return $stmt->execute($params);
     }
 
     public function delete($id)

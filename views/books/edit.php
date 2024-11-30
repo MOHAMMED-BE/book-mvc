@@ -23,7 +23,7 @@
             <div class="mb-2">
                 <label for="image" class="form-label">Current Image:</label><br>
                 <?php if (!empty($book['image'])): ?>
-                    <img src="/bookmvc/uploads/book_image/<?php echo htmlspecialchars($book['image']); ?>" alt="Book Image" class="rounded" style="width: 100px; height: auto; margin-bottom: 10px;">
+                    <img src="/bookmvc/uploads/book_image/<?php echo htmlspecialchars($book['image']); ?>" alt="<?php echo htmlspecialchars($book['title']); ?>" class="rounded" style="width: 100px; height: auto; margin-bottom: 10px;">
                 <?php else: ?>
                     <p>No image available.</p>
                 <?php endif; ?>

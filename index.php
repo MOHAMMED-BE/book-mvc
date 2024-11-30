@@ -71,13 +71,6 @@ $routeDisplay = ucwords(str_replace(['book',  'index'], ['Book', 'List'], $route
                     </a>
                 </li>
             </ul>
-            <div class="mtauto p-3 text-center user-profile">
-                <a href="<?php echo isset($_SESSION['user']) ? 'index.php?user/logout' : 'index.php?user/login' ?>" class="text-white <?php echo ($route ?? '') === 'user/login' ? 'active' : ''; ?>">
-                    <i class="bi bi-person-circle"></i>
-                    <?php echo  isset($_SESSION['user'])  ? $_SESSION['username'] . ' | Logout' : 'Login'; ?>
-                </a>
-
-            </div>
         </div>
 
         <div class="flex-grow-1">
